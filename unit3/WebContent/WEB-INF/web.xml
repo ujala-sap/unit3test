@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>unit3</display-name>
+  <welcome-file-list>
+  	 <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <login-config>
+    <auth-method>FORM</auth-method>
+  </login-config>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Protected Area</web-resource-name>
+      <url-pattern>/protected/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>Employee</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <security-role>
+    <description>Company employees</description>
+    <role-name>Employee</role-name>
+  </security-role>
+  <error-page>
+    <error-code>401</error-code>
+    <location>/unauthorized.html</location>
+  </error-page>
+  <servlet>
+    <servlet-name>com.sap.sample.opensap.week2.unit3.HelloEmployee</servlet-name>
+    <servlet-class>com.sap.sample.opensap.week2.unit3.HelloEmployee</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>com.sap.sample.opensap.week2.unit3.HelloEmployee</servlet-name>
+    <url-pattern>/protected/*</url-pattern>
+  </servlet-mapping>
+  <error-page>
+  	<error-code>403</error-code>
+  	<location>/unauthorized.jsp</location>
+  </error-page>
+</web-app>
